@@ -5,6 +5,10 @@
     <body>
         <h3>Hello Developer, welcome to the team</h3>
         <h1>Login</h1>
+        <% if (messages.error) {%>
+            <%= messages.error %>
+            <% } %>
+
         <form action="/login" method="POST">
             <div>
                 <label for="email">Email</label>
