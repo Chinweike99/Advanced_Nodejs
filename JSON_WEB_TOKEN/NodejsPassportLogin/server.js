@@ -8,6 +8,7 @@ const bcrypt = require('bcrypt');
 const passport = require('passport');
 const flash = require('express-flash');
 const session = require('express-session');
+const methodOverride = require('method-override')
 
 const users = [];
 
@@ -27,6 +28,7 @@ app.use(session({
 }))
 app.use(passport.initialize())
 app.use(passport.session())
+app.use(methodOverride('_method'))
 app.use(express.urlencoded({extended: true})) // Since data would be gotten from form
 
 const port = 3400;
@@ -65,6 +67,16 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
     }
     console.log(users);
 })
+
+// FUNCTION TO LOG USER OUT
+app.delete('/logout', (req, res) => {
+    req.logOut((err) => {
+        if(err){
+            return next(err);
+        }
+        res.redirect('/login');
+    });
+});
 
 // FUNCTION TO PROTECT ROUTES
 function checkAuthenticated(req, res, next){
