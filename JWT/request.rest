@@ -1,0 +1,12 @@
+GET http://localhost:3200/posts
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQ2hpbndlIiwiaWF0IjoxNzIwNDI0NzU1fQ.QsWFWasZmGdEYoMUeXwmUXSsTejigwARjIeWFaWIBqs
+
+
+###
+
+POST http://localhost:3200/login
+Content-Type: application/json
+
+{
+    "username": "Chinwe"
+}
