@@ -37,40 +37,38 @@ Returns a 401 status if no refresh token is provided.
 Returns a 403 status if the refresh token is not in the stored list.
 
 *jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => { ... }):*
-
 Verifies the refresh token. If valid, creates a new access token.
-app.delete('/logout', (req, res) => { ... }):
 
+*app.delete('/logout', (req, res) => { ... }):*
 Endpoint to handle user logout by removing their refresh token from the list.
 
-refreshTokens = refreshTokens.filter(token => token !== req.body.token):
-
+*refreshTokens = refreshTokens.filter(token => token !== req.body.token):*
 Filters out the provided token from the refresh tokens list.
-app.post('/login', (req, res) => { ... }):
 
+*app.post('/login', (req, res) => { ... }):*
 Endpoint to handle user login.
 
-const username = req.body.username:
-
+*const username = req.body.username:*
 Extracts the username from the request body.
-const user = { name: username }:
 
+*const user = { name: username }:*
 Creates a user object with the username.
-const accessToken = generateAccess(user):
 
+**const accessToken = generateAccess(user):**
 Generates an access token for the user.
-const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_SECRET):
 
+**const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_SECRET):**
 Generates a refresh token for the user.
-refreshTokens.push(refreshToken):
 
+**refreshTokens.push(refreshToken):**
 Adds the refresh token to the stored list.
-res.json({ accessToken: accessToken, refreshToken: refreshToken }):
 
+**res.json({ accessToken: accessToken, refreshToken: refreshToken }):**
 Responds with the access token and refresh token.
-function generateAccess(user){ ... }:
 
+**function generateAccess(user){ ... }:**
 Function to generate an access token for a user.
+
 return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '60s'}):
 Signs the JWT with the user's information and sets an expiration time of 60 seconds.
 app.listen(port, () => { ... }):
