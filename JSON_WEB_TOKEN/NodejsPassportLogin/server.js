@@ -11,7 +11,6 @@ const session = require('express-session');
 const methodOverride = require('method-override')
 
 const users = [];
-
 const initializePassport = require('./passportConfig')
 initializePassport(
     passport, 
@@ -19,7 +18,7 @@ initializePassport(
     id => users.find(user => user.id === id),
 );
 
-app.set('view-engine', 'ejs'); // This tells our server that w are working with ejs
+app.set('view-engine', 'ejs'); // This tells our server that we are working with ejs
 app.use(flash());
 app.use(session({
     secret: process.env.SESSION_SECRET,// Key to keep secret as to encrypt all of our informations
@@ -58,10 +57,9 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
             name: req.body.name,
             email: req.body.email,
             password: hashedPassword
-            // password: req.body.hashedPassword
+
         })
         res.redirect('/login');
-        // console.log(users.push);
     } catch(error){
         res.redirect('/register');
     }
