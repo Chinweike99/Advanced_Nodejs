@@ -1,41 +1,42 @@
 ### CODE EXPLANATION
 
 ## **authServer.js**
-require('dotenv').config():
+*require('dotenv').config():*
 
 Loads environment variables from a .env file into process.env. This is used to keep sensitive information like secrets out of your code.
-const express = require('express');:
 
+*const express = require('express');:*
 Imports the Express framework, which is used to build web applications.
-const jwt = require('jsonwebtoken');:
 
+*const jwt = require('jsonwebtoken');:*
 Imports the jsonwebtoken library, which is used to create and verify JSON Web Tokens (JWTs).
-const app = express();:
 
+
+*const app = express();:*
 Creates an instance of an Express application.
-app.use(express.json()):
 
+*app.use(express.json()):*
 Middleware that parses incoming requests with JSON payloads and is based on body-parser. It makes it possible to access the data sent in the request body via req.body.
-const port = 3300;:
 
+*const port = 3300;:*
 Sets the port number on which the server will listen.
-let refreshTokens = [];:
 
+*let refreshTokens = [];:*
 Initializes an array to store refresh tokens.
-app.post('/token', (req, res) => { ... }):
 
+*app.post('/token', (req, res) => { ... }):*
 Endpoint to handle requests for new access tokens using a refresh token.
 
-const refreshToken = req.body.token:
-
+*const refreshToken = req.body.token:*
 Extracts the refresh token from the request body.
-if(refreshToken == null) return res.sendStatus(401):
 
+*if(refreshToken == null) return res.sendStatus(401):*
 Returns a 401 status if no refresh token is provided.
-if(!refreshTokens.includes(refreshToken)) return res.sendStatus(403):
 
+*if(!refreshTokens.includes(refreshToken)) return res.sendStatus(403):*
 Returns a 403 status if the refresh token is not in the stored list.
-jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => { ... }):
+
+*jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => { ... }):*
 
 Verifies the refresh token. If valid, creates a new access token.
 app.delete('/logout', (req, res) => { ... }):
