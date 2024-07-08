@@ -27,15 +27,6 @@ app.get('/posts', authenticateToken, (req, res) =>{
     console.log(posts);
 })
 
-//Route to Authenticate user
-app.post('/login', (req, res) => {
-    // Authenticate User (Use what was learnt on passport, bcrypt etc to achieve this).
-    const username = req.body.username
-    const user = { name: username }
-
-    const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
-    res.json({ accessToken: accessToken })
-})
 
 function authenticateToken(req, res, next){
     const authHeader = req.headers['authorization']

@@ -1,12 +1,19 @@
 GET http://localhost:3200/posts
-Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQ2hpbndlIiwiaWF0IjoxNzIwNDI0NzU1fQ.QsWFWasZmGdEYoMUeXwmUXSsTejigwARjIeWFaWIBqs
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQ2hpbndlIiwiaWF0IjoxNzIwNDI4MzQ5LCJleHAiOjE3MjA0MjgzNjR9.X-90Kk8SHVZ7rlcDJKphDUz2PFenvw9vB2QynMQHhIQ
 
 
 ###
-
-POST http://localhost:3200/login
+POST http://localhost:3300/token
 Content-Type: application/json
 
 {
-    "username": "Chinwe"
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQ2hpbndlIiwiaWF0IjoxNzIwNDI4MzI0fQ._7xZQTnFmhfQE2cf_HyUVWnyrMTd8CDsquc5OMDbHZM"
+}
+
+###
+POST http://localhost:3300/login
+Content-Type: application/json
+
+{
+    "username": "Innocent"
 }
