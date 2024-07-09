@@ -4,8 +4,7 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const app = express();
 
-
-app.use(express.json()) // This allows our application to use json from the body up to the part that get passed to it from a request.
+app.use(express.json())
 const port = 3200;
 
 const posts = [
@@ -21,12 +20,10 @@ const posts = [
     }
 ]
 
-
 app.get('/posts', authenticateToken, (req, res) =>{
     res.json(posts.filter(post => post.username === req.user.name))
     console.log(posts);
 })
-
 
 function authenticateToken(req, res, next){
     const authHeader = req.headers['authorization']

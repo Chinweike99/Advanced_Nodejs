@@ -1,11 +1,10 @@
-require('dotenv').config()
+require('dotenv').config() //Loads environment variables from .env
 
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const app = express();
 
-
-app.use(express.json()) // This allows our application to use json from the body up to the part that get passed to it from a request.
+app.use(express.json()) //It makes it possible to access the data sent in the request body via req.body.
 const port = 3300;
 
 let refreshTokens = [];
