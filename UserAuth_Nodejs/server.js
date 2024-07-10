@@ -5,7 +5,6 @@ const app = express()
 /*To harsh a password we need two steps:
 1. Create a bcrypt.genSalt.
 2. use the salt along with the password to create a hashed password*/
-
 app.use(express.json())
 const port = 3000;
 const users = [];
