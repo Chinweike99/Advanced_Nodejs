@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://kit.fontawesome.com/9b776a6ba6.js" crossorigin="anonymous"></script>
+        <title>ChatApp</title>
+    </head>
+    <body>
+        <div class="chat-container">
+            <header class="chat-header">
+                <h1><i class="fas fa-smile"></i>ChatApp</h1>
+                <a href="index.html">Leave room</a>
+            </header>
+            <main class="chat-main">
+                <div class="chat-sidebar">
+                    <h3><i class="fas fa-comments"></i>Room Name:</h3>
+                    <h2 id="room-name">JavaScript</h2>
+                    <h3><i class="fas fa-users"></i></h3>
+                    <ul id="users">
+                        <li>Chris</li>
+                        <li>Collins</li>
+                        <li>Jacob</li>
+                        <li>Paragon</li>
+                        <li>Nado</li>
+                    </ul>
+                </div>
+                <div class="chat-messages">
+                    <div class="chat-messages">
+                        <p class="meta">Chris <span>9:00am</span></p>
+                        <p class="text">
+                            Reach tech audiences through an exclusive network of design, development, and tech websites.
+                        </p>
+                    </div>
+                    <div  class="message">
+                        <p class="meta">Jacob <span>7:00am</span></p>
+                        <p class="text">
+                            Reach tech audiences through an exclusive network of design, development, and tech websites.
+                        </p>
+                    </div>
+                </div>
+            </main>
+            <div class="chat-form-container">
+                <form action="" id="chat-form">
+                    <input type="text" id="msg" placeholder="Enter Message" required autocomplete="on">
+                    <button class="btn"><i class="fas fa-paper-plane"></i> Send</button>
+                </form>
+            </div>
+        </div>
+
+        <script src="js/script.js"></script>
+    </body>
+</html>
