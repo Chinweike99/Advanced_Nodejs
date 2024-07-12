@@ -2,7 +2,7 @@ const express = require('express');
 const http = require('http');
 const socketio = require('socket.io');
 const formatMessage = require('./utils/messages')
-const { userJoin, getCurrentUser} = require('./utils/users')
+const { userJoin, getCurrentUser, userLeaves, getRoomUsers} = require('./utils/users')
 
 
 const app = express()
@@ -26,6 +26,13 @@ io.on('connection', (socket) =>{
 
         // BroadCast when a user connects
         socket.broadcast.to(user.room).emit("message", formatMessage(botName, `${user.username} joined the chat`));// this emits to everyone except the user that is connecting
+
+        // Send users and room info
+        io.to(user.room).emit('roomUsers', {
+            room: user.room,
+            users: getRoomUsers(user.room)
+        });
+
     })
     
     // Listen for chat message
@@ -37,7 +44,15 @@ io.on('connection', (socket) =>{
 
      // Runs when a user disconnects ## It has to be inside the connection
      socket.on('disconnect', () => {
-        io.emit("message", formatMessage(botName,'A user left'));
+        const user = userLeaves(socket.id);
+        if(user){
+            io.to(user.room).emit("message", formatMessage(botName,`${user.username} left`));
+
+            io.to(user.room).emit('roomUsers', {
+                room: user.room,
+                users: getRoomUsers(user.room)
+            });
+        }
     });
 
     // io.emit() // To all clients in general
